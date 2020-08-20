@@ -14,8 +14,6 @@ const styles = StyleSheet.create({
     }
 });  
 
-
-
 export default ({ navigation }) => {
     const userId = navigation.getParam("user_id")
     const userName = navigation.getParam("name")

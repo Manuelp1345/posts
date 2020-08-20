@@ -4,7 +4,6 @@ import UserScreen from "./screens/users";
 import PostsScreen from "./screens/posts";
 import DetailScreen from "./screens/detail";
 
-
 UserScreen.navigationOptions = {
   title:"Usuarios",
 }

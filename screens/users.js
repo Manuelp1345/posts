@@ -2,8 +2,6 @@ import React, {useEffect ,useState}  from 'react';
 import { StyleSheet,View, FlatList, Text } from 'react-native';
 import ListItem from "../components/listitem"
 
-
-
 const styles = StyleSheet.create({
     container: {
     flex: 1,
@@ -21,10 +19,10 @@ export default ({ navigation }) => {
     const [users, setUsers] = useState([])
 
     const fetchUsers = async () =>{
-      const response =  await fetch("https://jsonplaceholder.typicode.com/Users")
-      const data = await response.json()
-      setUsers(data)
-      setLoading(false)
+        const response =  await fetch("https://jsonplaceholder.typicode.com/Users")
+        const data = await response.json()
+        setUsers(data)
+        setLoading(false)
     }
     useEffect(()=> {fetchUsers()},[])
     return (
