@@ -1,22 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator} from "react-navigation-stack";
+import UserScreen from "./screens/users";
+import PostsScreen from "./screens/posts";
+import DetailScreen from "./screens/detail";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start prueba  working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+UserScreen.navigationOptions = {
+  title:"Usuarios",
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+PostsScreen.navigationOptions= ({ navigation }) =>{
+  return {
+    title: "Posts De: " + navigation.getParam("name")
+  }
+}
 
+DetailScreen.navigationOptions= ({ navigation }) =>{
+  return {
+    title: navigation.getParam("title")
+  }
+}
+
+const AppNavigator = createStackNavigator({
+  Users: {
+    screen: UserScreen,
+  },
+  Posts:{
+    screen: PostsScreen,
+  },
+  Detail:{
+    screen: DetailScreen
+  },
+
+},
+{
+  initialRouname:"Users",
+  defaultNavigationOptions:{
+    headerStyle:{
+      backgroundColor: "cyan",
+    },
+    headerTitleStyle:{
+      textAlign:"center",
+      fontWeight:"bold",
+    }
+  }
+})
+
+export default createAppContainer(AppNavigator)
